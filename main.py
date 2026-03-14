@@ -73,8 +73,8 @@ def main(cfg):
         output_df = pd.concat([output_df, df], ignore_index=True)
     output_path = output_dir_path / 'output.csv'
     output_df.to_csv(output_path, index=False)
-    output = output_df.to_csv(index=False, header=False)
-    print(output)  # stdout?
+    output = output_df[output_columns].to_csv(index=False, header=False)
+    print(output)
 
 
 if __name__ == '__main__':

@@ -23,7 +23,8 @@ def read_stdin():
     logger.info('received piped input')
     logger.info(input_text)
     csv_parts = input_text.split('---\n') if '---\n' in input_text else [input_text]
-    data_columns = ['image', 'bbox', 'depth', 'conf', 'label', 'cls_conf']
+    # data_columns = ['image', 'bbox', 'depth', 'conf', 'label', 'cls_conf']
+    data_columns = ['image', 'bbox', 'depth']
     df_full = pd.DataFrame(columns=data_columns)
     for i, csv_part in enumerate(csv_parts):
         stripped = csv_part.strip()
@@ -52,8 +53,7 @@ if __name__ == '__main__':
     for k, im_df in dataframe.groupby('image'):
         apples = im_df.to_dict(orient='records')
         apples = [{'bbox': [int(x) for x in json.loads(apple['bbox'])],
-                  'depth': apple['depth'],
-                  'label': apple['label']} for apple in apples]
+                  'depth': apple['depth']} for apple in apples]
         out_im = draw_ordered_apples(cv2.imread(im_df['image'].iloc[0]), apples)
         cv2.imshow(Path(im_df['image'].iloc[0]).name, out_im)
         cv2.waitKey()
