@@ -17,7 +17,7 @@ tkinter_imported = None
 
 try:
     from tkinter import Tk
-    from tkinter.filedialog import askopenfilename
+    from tkinter.filedialog import askopenfilenames
     tkinter_imported = True
 except ImportError:
     tkinter_imported = False
@@ -34,18 +34,18 @@ def main(cfg):
     extensions = extensions + list(map(lambda x: x.upper(), extensions))
     logger.info(f'supported image extensions: {extensions}')
 
-    im_pth = Path(cfg.input_path)
+    input_path = Path(cfg.input_path)
+    image_paths = chain.from_iterable(input_path.glob(ext) for ext in extensions) if input_path.is_dir() else [input_path]
     if cfg.interactive:
         if tkinter_imported:
             Tk().withdraw()
-            im_pth = Path(askopenfilename(initialdir=im_pth.parent))
+            image_paths = map(Path, askopenfilenames(initialdir=input_path.parent))
         else:
             logger.warning('Interactive mode requires tkinter, which is not available. Using default image path.')
-    image_paths = chain.from_iterable(im_pth.glob(ext) for ext in extensions) if im_pth.is_dir() else [im_pth]
     image_paths = list(image_paths)
     logger.info(f'{len(image_paths)} images to process')
     output_dir_path = Path(cfg.output_path)
-    output_columns = ['image', 'bbox', 'depth']
+    output_columns = ['image', 'center', 'depth']
     output_df = pd.DataFrame(columns=output_columns)
     for im_p in image_paths:
         logger.info(f'Processing {im_p}')
