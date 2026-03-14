@@ -1,1 +1,2 @@
 weights/efficientnet_b0_0345vs1.pth filter=lfs diff=lfs merge=lfs -text
+weights/efficientnet_b0_0345vs12.pth filter=lfs diff=lfs merge=lfs -text
