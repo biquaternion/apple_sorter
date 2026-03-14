@@ -1,0 +1,27 @@
+model:
+  name: efficientnet_b0
+  num_classes: 2
+  pretrained: true
+
+dataset:
+  train_annotations: ../datasets/minneapple/counting/train/train_ground_truth.txt
+  val_annotations: ../datasets/minneapple/counting/val/val_ground_truth.txt
+  input_size: 100
+  classes: [ [0, 3, 4, 5], [1, 2] ]
+
+training:
+  num_epochs: 10
+  batch_size: 32
+  learning_rate: 3e-4
+  num_workers: 4
+  save_path: best_model.pth
+
+device: mps  # cuda | mps | cpu
+
+mlflow:
+  experiment_name: apple_sorter
+  tracking_uri: mlruns
+
+hydra:
+  job:
+    chdir: false

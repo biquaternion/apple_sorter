@@ -1,0 +1,13 @@
+numpy
+pandas
+matplotlib
+scikit-learn
+torch
+torchvision
+tqdm
+hydra-core
+transformers
+pillow
+opencv-python
+ultralytics
+mlflow

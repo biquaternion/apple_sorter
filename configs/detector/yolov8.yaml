@@ -1,0 +1,6 @@
+_target_: src.detectors.yolov8_detector.YOLOv8Detector
+
+#model_path: yolov8n.pt
+model_path: ../../weights/yolov8x.pt
+#model_path: /Users/dmitry/arbeit/Pek Automotive/related/Apple-Detection-in-MinneApple-Dataset-with-YOLOv8/Models/Ground_original_best.pt
+conf: 0.1

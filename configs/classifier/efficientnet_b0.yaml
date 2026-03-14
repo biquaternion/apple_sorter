@@ -1,0 +1,9 @@
+_target_: src.classifiers.efficientnet_b0_classifier.EfficientNetAppleClassifier
+
+num_classes: 2
+weights_path: ${hydra:runtime.cwd}/weights/efficientnet_b0_0345vs1.pth
+
+device: ${device}
+
+input_size: 100
+threshold: 0.15

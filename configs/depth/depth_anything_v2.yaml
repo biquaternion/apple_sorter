@@ -1,0 +1,4 @@
+_target_: src.depth.depth_anything_v2.DepthAnythingV2
+
+model_name: depth-anything/Depth-Anything-V2-Small-hf
+device: cuda

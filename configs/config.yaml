@@ -1,0 +1,19 @@
+defaults:
+  - detector: yolov8
+  - depth: depth_anything_v2
+  - classifier: efficientnet_b0
+  - pipeline: apple_pipeline
+  - _self_
+
+device: mps  # cuda | mps | cpu
+
+input_path: ../../../../sample images
+interactive: false
+output_path: output
+
+logging:
+  dir: logs
+
+hydra:
+  job:
+    chdir: true

@@ -1,0 +1,9 @@
+_target_: src.detectors.grounding_dino_detector.GroundingDINODetector
+
+model_name: IDEA-Research/grounding-dino-tiny
+#text_prompt: "apple"
+text_prompt: "apple. green apple"
+
+threshold: 0.1
+
+device: mps  # cuda | mps | cpu

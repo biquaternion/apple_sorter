@@ -1,0 +1,5 @@
+_target_: src.pipeline.apple_pipeline.ApplePipeline
+
+detector: ${detector}
+depth: ${depth}
+classifier: ${classifier}
