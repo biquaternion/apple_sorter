@@ -48,6 +48,6 @@ class ApplePipeline:
             region = depth_map[y1:y2, x1:x2]
             depth_value = np.median(region)
             apples.append({**det, 'depth': float(depth_value)})
-        apples_sorted = sorted(apples, key=lambda x: x['depth'])
+        apples_sorted = sorted(apples, key=lambda x: x['depth'], reverse=True)
 
         return apples_sorted
