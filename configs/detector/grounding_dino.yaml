@@ -6,4 +6,4 @@ text_prompt: "apple. green apple"
 
 threshold: 0.1
 
-device: mps  # cuda | mps | cpu
+device: ${device}  # cuda | mps | cpu
