@@ -11,7 +11,6 @@ from pipeline.postprocessing import filter_by_label, filter_by_box_nesting
 logger = logging.getLogger(__name__)
 
 class ApplePipeline:
-
     def __init__(self, detector, depth, classifier: Optional = None):
         logger.info('Initialization')
         self.detector = detector

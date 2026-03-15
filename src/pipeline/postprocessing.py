@@ -23,12 +23,8 @@ def filter_by_box_nesting(detections, return_inner=True, tol=0.03):
         tol_ax, tol_ay = aw * tol, ah * tol
         tol_bx, tol_by = bw * tol, bh * tol
 
-        a_in_b = (
-                a[0] >= b[0] - tol_bx and
-                a[1] >= b[1] - tol_by and
-                a[2] <= b[2] + tol_bx and
-                a[3] <= b[3] + tol_by
-        )
+        a_in_b = (a[0] >= b[0] - tol_bx and a[1] >= b[1] - tol_by and
+                  a[2] <= b[2] + tol_bx and a[3] <= b[3] + tol_by)
 
         b_in_a = (b[0] >= (a[0] - tol_ax) and b[1] >= (a[1] - tol_ay) and
                   b[2] <= (a[2] + tol_ax) and b[3] <= (a[3] + tol_ay))
