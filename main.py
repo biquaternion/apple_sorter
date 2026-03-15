@@ -12,6 +12,9 @@ from hydra.utils import instantiate
 from src.visualization.draw_apples import draw_ordered_apples
 from src.utils.logging_config import setup_logging
 import logging
+from huggingface_hub.utils import logging as hf_logging
+hf_logging.set_verbosity_error()
+logging.getLogger("httpx").setLevel(logging.ERROR)
 
 tkinter_imported = None
 
@@ -35,6 +38,7 @@ def main(cfg):
     logger.info(f'supported image extensions: {extensions}')
 
     input_path = Path(cfg.input_path)
+    logger.debug(f'Input path: {input_path.absolute()}, {input_path.exists()}')
     image_paths = chain.from_iterable(input_path.glob(ext) for ext in extensions) if input_path.is_dir() else [input_path]
     if cfg.interactive:
         if tkinter_imported:
