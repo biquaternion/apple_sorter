@@ -45,7 +45,9 @@ def draw_ordered_apples(image, apples, mode: DrawMode=DrawMode.CENTER):
         text = f'{order}'
         if depth is not None:
             text += f' d={depth:.2f}'
+        font_scale = canvas.shape[0] / 1500.
+        thickness = 2 if font_scale > 1 else 1
         cv2.putText(canvas, text, text_pos, cv2.FONT_HERSHEY_SIMPLEX,
-                    1.0, (0, 0, 255), 2, cv2.LINE_AA)
+                    font_scale, (0, 0, 255), thickness, cv2.LINE_AA)
 
     return canvas
