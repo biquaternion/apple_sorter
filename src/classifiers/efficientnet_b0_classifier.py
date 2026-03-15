@@ -12,7 +12,7 @@ class EfficientNetAppleClassifier:
     def __init__(self,
                  num_classes,
                  weights_path,
-                 device="cpu",
+                 device='cpu',
                  input_size=224,
                  threshold=0.5):
 

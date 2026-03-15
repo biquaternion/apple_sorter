@@ -110,10 +110,10 @@ def train_model(model,
 
 
     with mlflow.start_run():  # ← wrap the whole training loop
-        mlflow.log_params({"num_epochs": num_epochs,
-                           "learning_rate": learning_rate,
-                           "batch_size": train_loader.batch_size,
-                           "model": type(model).__name__})
+        mlflow.log_params({'num_epochs': num_epochs,
+                           'learning_rate': learning_rate,
+                           'batch_size': train_loader.batch_size,
+                           'model': type(model).__name__})
         model = model.to(device)
 
         criterion = nn.CrossEntropyLoss()
@@ -142,8 +142,8 @@ def train_model(model,
                 if best_val_acc > 0.8:
                     mlflow.pytorch.log_model(
                         pytorch_model=model,
-                        artifact_path="best_model",
-                        code_paths=["train/train_classifier.py", "train/minneapple_dataset.py"]
+                        artifact_path='best_model',
+                        code_paths=['train/train_classifier.py', 'train/minneapple_dataset.py']
                     )
                     if save_path:
                         Path(save_path).parent.mkdir(parents=True, exist_ok=True)
@@ -157,7 +157,9 @@ def train_model(model,
     return train_losses, train_accuracies, val_losses, val_accuracies
 
 
-def test_model(model, test_loader, device):
+def test_model(model,
+               test_loader,
+               device):
     criterion = nn.CrossEntropyLoss()
     test_loss, test_acc = evaluate(model, test_loader, criterion, device)
     return test_loss, test_acc

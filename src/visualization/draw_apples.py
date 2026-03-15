@@ -20,6 +20,7 @@ def draw_apple_center(canvas, x, y):
     text_pos = (x, max(0, y - radius * 3 - 10))
     return text_pos
 
+
 def draw_apple_box(canvas, x1, y1, x2, y2):
     h, w, _ = canvas.shape
     width = h // 360
@@ -28,7 +29,7 @@ def draw_apple_box(canvas, x1, y1, x2, y2):
     return text_pos
 
 
-def draw_ordered_apples(image, apples, mode: DrawMode=DrawMode.CENTER):
+def draw_ordered_apples(image, apples, mode: DrawMode = DrawMode.CENTER):
     canvas = image.copy()
     for order, apple in enumerate(apples, start=1):
         depth = apple.get('depth', None)

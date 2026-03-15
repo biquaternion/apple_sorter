@@ -13,7 +13,7 @@ from .base import BaseDetector
 class GroundingDINODetector(BaseDetector):
 
     def __init__(self, model_name: str = 'IDEA-Research/grounding-dino-base',
-                 text_prompt: str = "apple", threshold: float = 0.3,
+                 text_prompt: str = 'apple', threshold: float = 0.3,
                  device: str = 'cuda'):
         # self.device = torch.device(device if torch.cuda.is_available() else 'mps')
         self.device = torch.device(device)

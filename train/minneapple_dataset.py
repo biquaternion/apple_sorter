@@ -16,7 +16,7 @@ from torch.utils.data import WeightedRandomSampler
 class MinneAppleDataset(Dataset):
     def __init__(self,
                  annotations_file: Union[str, Path],
-                 classes: Tuple=(0, 1),
+                 classes: Tuple = (0, 1),
                  transform=None):
         self.annotations = []
         self.images_path = Path(annotations_file).parent / 'images'
@@ -61,10 +61,12 @@ def get_train_transforms(input_size=224):
                       T.ToImage(), T.ToDtype(torch.float32, scale=True),
                       T.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])])
 
+
 def get_val_transforms(input_size=224):
     return T.Compose([T.Resize((input_size, input_size)),
                       T.ToImage(), T.ToDtype(torch.float32, scale=True),
                       T.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])])
+
 
 def get_dataloaders(train_dataset: MinneAppleDataset,
                     val_dataset: MinneAppleDataset,
@@ -86,12 +88,14 @@ def get_dataloaders(train_dataset: MinneAppleDataset,
                             num_workers=num_workers)
     return train_loader, val_loader
 
+
 if __name__ == "__main__":
     import matplotlib.pyplot as plt
+
     dataset = MinneAppleDataset('../../datasets/minneapple/counting/train/train_ground_truth.txt',
                                 classes=((0, 3, 4, 5), 1),
                                 transform=get_val_transforms(100))
-    print(f"Dataset size: {len(dataset)}")
+    print(f'Dataset size: {len(dataset)}')
 
     train_loader, val_loader = get_dataloaders(dataset,
                                                dataset,
@@ -107,4 +111,3 @@ if __name__ == "__main__":
         plt.imshow(img.numpy())
         plt.axis('off')
     plt.show()
-

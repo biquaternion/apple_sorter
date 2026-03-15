@@ -15,6 +15,7 @@ from visualization.draw_apples import draw_ordered_apples
 
 logger = getLogger(__name__)
 
+
 def read_stdin():
     input_text = sys.stdin.read()
     if not input_text.strip():
@@ -44,6 +45,7 @@ def read_stdin():
                 continue
     return df_full
 
+
 if __name__ == '__main__':
     setup_logging('.')
     dataframe = read_stdin()
@@ -53,7 +55,7 @@ if __name__ == '__main__':
     for k, im_df in dataframe.groupby('image'):
         apples = im_df.to_dict(orient='records')
         apples = [{'center': [int(x) for x in json.loads(apple['center'])],
-                  'depth': apple['depth']} for apple in apples]
+                   'depth': apple['depth']} for apple in apples]
         out_im = draw_ordered_apples(cv2.imread(im_df['image'].iloc[0]), apples)
         cv2.imshow(Path(im_df['image'].iloc[0]).name, out_im)
         cv2.waitKey()
