@@ -16,7 +16,7 @@ run:
 	PYTHONPATH=./src python main.py input_path='$(INPUT_PATH)' output_path='$(OUTPUT_PATH)' detector=grounding_dino | PYTHONPATH=./src python src/visualization/viewer.py
 
 run-interactive:
-	PYTHONPATH=./src python main.py interactive=true detector=grounding_dino pipeline.classifier=null | PYTHONPATH=./src python src/visualization/viewer.py
+	PYTHONPATH=./src python main.py interactive=true detector=grounding_dino pipeline.classifier=null detector.grounding_dino.model_name=IDEA-Research/grounding-dino-base | PYTHONPATH=./src python src/visualization/viewer.py
 
 download-dataset:
 	@echo 'Downloading dataset'
