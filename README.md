@@ -41,9 +41,12 @@ The detector has a low threshold to maximize recall.
 - detections whose boxes fully cover other boxes are removed
 
 The center of each bounding box is used as the estimated apple center
+
 3. false positives are filtered using a binary classifier trained on MinneApple dataset
 (acc 0.95-0.98 depending on training/validation subsets).
+
 4. apply depth estimation to the input image using depth-anything-v2 (currently the only supported depth model)
+
 5. postprocessing:
 
 for each remaining detection (representing a single apple), the median depth value within the box is used as apple's relative distance
