@@ -4,7 +4,7 @@ Developed using Python 3.12
 ### Requirements
 - **ultralytics yolov8** or
 - **grounding-dino**
-- **depth-anything-v2** (see requirements.txt) and
+- **depth-anything-v2** and
 - **hydra** for configuration management
 - **opencv** for visualization and some image processing routines
 
