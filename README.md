@@ -21,7 +21,7 @@ Supports command-line input and interactive mode
 ### Usage:
 - via make:
   ```
-  make install-dependencies
+  make install
   make run-interactive
   ```
 - via python (set PYTHONPATH to src)
