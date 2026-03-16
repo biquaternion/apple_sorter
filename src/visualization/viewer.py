@@ -49,9 +49,9 @@ def read_stdin():
 if __name__ == '__main__':
     setup_logging('.')
     dataframe = read_stdin()
-    print(dataframe)
     if dataframe is None:
         sys.exit(1)
+    logger.info(dataframe)
     for k, im_df in dataframe.groupby('image'):
         apples = im_df.to_dict(orient='records')
         apples = [{'center': [int(x) for x in json.loads(apple['center'])],

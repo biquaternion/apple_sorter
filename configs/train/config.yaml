@@ -16,7 +16,7 @@ training:
   num_workers: 4
   save_path: best_model.pth
 
-device: mps  # cuda | mps | cpu
+device: cpu  # cuda | mps | cpu | hip
 
 mlflow:
   experiment_name: apple_sorter

@@ -33,3 +33,4 @@ train:
 clean:
 	rm -rf outputs/
 	rm -f *.csv
+	rm -f *.log

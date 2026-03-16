@@ -5,7 +5,7 @@ defaults:
   - pipeline: apple_pipeline
   - _self_
 
-device: mps  # cuda | mps | cpu
+device: cpu  # cuda | mps | cpu | hip
 
 input_path: ../../../../sample images
 interactive: false
